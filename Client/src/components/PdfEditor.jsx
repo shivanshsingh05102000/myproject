@@ -8,7 +8,10 @@ import axios from "axios";
 import { cssBoxToPdfPoints } from "../lib/Coord";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL || "";
+console.log("DEBUG: API_BASE =", API_BASE);
+
+
 
 export default function PdfEditor({ defaultPdf = "/sample.pdf", pdfUrl = null, initialPage = 1 }) {
   const containerRef = useRef(null);
