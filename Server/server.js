@@ -8,14 +8,16 @@ const cors = require('cors');
 const multer = require('multer');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
+const cors = require('cors');
 const { PDFDocument } = require('pdf-lib');
 
 const UploadedDocument = require('./models/UploadedDocument');
 const DocumentModel = require('./models/Document');
 const { sha256Hex } = require('./utils/hash');
 
+
 const app = express();
-app.use(cors());
+app.use(cors({ origin: true }));
 app.use(express.json({ limit: '30mb' }));
 app.use(express.urlencoded({ extended: true }));
 
@@ -248,5 +250,7 @@ if (!MONGO_URI) {
 }
 
 // Start
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log('Server listening on', PORT));
+// use the provided PORT (Render) or fallback
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
