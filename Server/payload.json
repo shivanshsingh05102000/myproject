@@ -1,0 +1,6 @@
+{
+  "pdfId": "sample",
+  "pageIndex": 0,
+  "pdfBox": { "x": 120, "y": 350, "width": 200, "height": 60 },
+  "signatureBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAECAYAAAB2kZPRAAAAHElEQVQImWP8//8/AzWAiSTGgWjgkGQAALkJBFyS0A0AAAAASUVORK5CYII="
+}
