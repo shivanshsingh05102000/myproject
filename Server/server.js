@@ -264,7 +264,8 @@ app.get("/api/documents", async (req, res) => {
 });
 
 
-const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGODB_URI;
+console.log(MONGO_URI)
 if (!MONGO_URI) {
   console.warn('MONGODB_URI not set — DB will not connect.');
 } else {
