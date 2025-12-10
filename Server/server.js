@@ -263,31 +263,22 @@ app.get("/api/documents", async (req, res) => {
   }
 });
 
-// =======================
-// MongoDB Connect
-// =======================
-const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
+
+const MONGO_URI = process.env.MONGODB_URI;
 
 if (!MONGO_URI) {
-  console.warn(
-    "MONGODB_URI / MONGO_URI not set — DB will NOT connect."
-  );
+  console.warn('MONGODB_URI / MONGO_URI not set — DB will NOT connect.');
 } else {
   mongoose
-    .connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then(() => console.log("MongoDB connected"))
+    .connect(MONGO_URI) // no deprecated options for mongoose v7+
+    .then(() => console.log('MongoDB connected'))
     .catch((err) => {
-      console.error("MongoDB connection error:", err.message || err);
+      console.error('MongoDB connection error:', err.message || err);
       process.exit(1); // Fail fast so Render shows the issue
     });
 }
 
-// =======================
-// Start Server (Render)
-// =======================
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () =>
